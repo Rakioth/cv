@@ -1,16 +1,13 @@
 <h1 align="center">
-  <<img src="https://github.com/Rakioth/raks.dev/assets/75569411/7c0b06c0-60d6-4dd2-aa5c-2a0de527abd6" alt="Crystal Ball" width="33"/>> Portfolio
+  <<img src="https://github.com/Rakioth/cv/assets/75569411/f1c4d558-9cd9-49b0-bf76-208a84fb5bf1" alt="Books" width="33"/>> Curriculum
 </h1>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Rakioth/raks.dev/assets/75569411/80570bfb-1f5a-49f3-b8f1-1ee68e075fd1">
-  <img src="https://github.com/Rakioth/raks.dev/assets/75569411/c60a0631-425a-4d11-9836-e85997e6ad38" alt="Portfolio Logo" align="left" width="192"/>
-</picture>
+<img src="https://github.com/Rakioth/cv/assets/75569411/3f14dcad-26f2-4197-b5f4-16f29eaf7775" alt="Curriculum Logo" align="left" width="192"/>
 
 ## Project Overview
 
-This is my personal website.
+This is my personal curriculum.
 
-It prioritizes **speed**, **accessibility** and **responsiveness**.
+It features a lightweight [command palette](https://github.com/jesubohr/hotkeypad).
 
 Built with just [Astro](https://astro.build), [TypeScript](https://www.typescriptlang.org) & [Tailwind CSS](https://tailwindcss.com).
