@@ -10,15 +10,10 @@ const t = useTranslations(locale)
 interface Props {
 	title: string
 	description: string
-	canonical?: string
 	image?: string
 }
 
-const { title, description, canonical, image = "/og.jpg" } = Astro.props
-
-const canonicalURL = canonical
-	? new URL(canonical, Astro.site)
-	: new URL(Astro.url.pathname, Astro.site)
+const { title, description, image = "/og.jpg" } = Astro.props
 ---
 
 <title>{title}</title>
@@ -29,9 +24,7 @@ const canonicalURL = canonical
 <link rel="preload" href={newsreader} as="font" type="font/woff2" crossorigin />
 <link rel="preload" href={onest} as="font" type="font/woff2" crossorigin />
 
-<link rel="canonical" href={canonicalURL} />
 <meta name="viewport" content="width=device-width" />
-
 <meta name="keywords" content={t("seo.keywords")} />
 
 <meta property="og:image" content={new URL(image, Astro.url)} />
