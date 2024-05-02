@@ -1,0 +1,23 @@
+---
+interface Props {
+	href: string
+	isExternal?: boolean
+	ariaLabel?: string
+	class?: string
+}
+
+const { href, ariaLabel, isExternal = true, class: className } = Astro.props
+---
+
+<a
+	href={href}
+	rel={isExternal ? "noopener noreferrer" : undefined}
+	target={isExternal ? "_blank" : "_self"}
+	aria-label={ariaLabel}
+	class:list={[
+		className,
+		"inline-flex size-8 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 focus-visible:border-gray-500 focus-visible:outline-none any-hover:bg-gray-100 any-hover:text-black motion-safe:transition-colors [&>svg]:size-[1.125rem]",
+	]}
+>
+	<slot />
+</a>

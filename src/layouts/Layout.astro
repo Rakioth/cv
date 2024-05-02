@@ -1,0 +1,83 @@
+---
+import { ViewTransitions } from "astro:transitions"
+
+import SEO from "@/components/SEO.astro"
+import CommandPalette from "@/sections/CommandPalette.astro"
+import Header from "@/sections/Header.astro"
+import "@fontsource-variable/newsreader"
+import "@fontsource-variable/onest"
+
+interface Props {
+	lang: string
+	title: string
+	description: string
+	canonical?: string
+	image?: string
+}
+
+const { lang, title, description, canonical, image } = Astro.props
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<SEO title={title} description={description} canonical={canonical} image={image} />
+		<ViewTransitions />
+	</head>
+
+	<body class="spacer min-h-screen overflow-x-hidden p-6 md:p-12">
+		<Header />
+		<slot />
+		<CommandPalette />
+		<style is:global>
+			html {
+				font-family: "Onest Variable", system-ui, sans-serif;
+				scroll-behavior: none;
+				scrollbar-gutter: stable;
+			}
+
+			.spacer {
+				@apply flex flex-col gap-y-8 print:gap-y-6;
+			}
+
+			@media screen and (prefers-reduced-motion: no-preference) {
+				html {
+					scroll-behavior: smooth;
+				}
+			}
+
+			@supports selector(::-webkit-scrollbar) {
+				::-webkit-scrollbar {
+					width: 0.675rem;
+					border-radius: 0.675rem;
+				}
+
+				::-webkit-scrollbar-thumb {
+					border: 0.125rem solid transparent;
+					border-radius: 0.675rem;
+					background-color: black;
+					background-clip: content-box;
+				}
+
+				::-webkit-scrollbar-thumb:active {
+					background-color: theme("colors.gray.500");
+				}
+
+				::-webkit-scrollbar-track {
+					background: var(--background-image);
+				}
+
+				::-webkit-scrollbar-corner {
+					background: var(--background-image);
+				}
+			}
+
+			@supports not selector(::-webkit-scrollbar) {
+				* {
+					scrollbar-width: thin;
+					scrollbar-color: black transparent;
+				}
+			}
+		</style>
+	</body>
+</html>
