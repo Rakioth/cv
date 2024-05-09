@@ -24,7 +24,7 @@ const { lang, title, description, image } = Astro.props
 		<ViewTransitions />
 	</head>
 
-	<body class="spacer min-h-full overflow-x-hidden p-6 md:p-12">
+	<body class="spacer min-h-full overflow-x-hidden p-6 md:p-12 print:p-14">
 		<Header />
 		<slot />
 		<CommandPalette />
@@ -37,6 +37,12 @@ const { lang, title, description, image } = Astro.props
 
 			.spacer {
 				@apply flex flex-col gap-y-8 print:gap-y-6;
+			}
+
+			@media print {
+				@page {
+					margin: 0;
+				}
 			}
 
 			@media screen and (prefers-reduced-motion: no-preference) {
