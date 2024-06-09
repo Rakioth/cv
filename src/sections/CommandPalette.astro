@@ -1,5 +1,5 @@
 ---
-import { getLocaleByUrl, getNextLocale, translations, useTranslations } from "@/i18n"
+import { TRANSLATIONS, getLocaleByUrl, getNextLocale, useTranslations } from "@/i18n"
 import CommandIcon from "@/icons/Command.astro"
 import "hotkeypad/index.css"
 
@@ -12,7 +12,7 @@ const nextLocalePath = () => {
 	const pathname = Astro.url.pathname
 	const path = pathname.split("/")
 
-	const index = path.findIndex((locale) => locale in translations)
+	const index = path.findIndex((locale) => locale in TRANSLATIONS)
 
 	if (index !== -1) {
 		path[index] = nextLocale

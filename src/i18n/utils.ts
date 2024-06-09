@@ -1,26 +1,26 @@
 import type { Locale, Translation } from "@/i18n/config"
-import { defaultLocale, translations } from "@/i18n/config"
+import { DEFAULT_LOCALE, TRANSLATIONS } from "@/i18n/config"
 
 export function getLocaleByUrl(url: URL) {
 	const [, locale] = url.pathname.split("/")
-	if (locale in translations) return locale as Locale
-	return defaultLocale
+	if (locale in TRANSLATIONS) return locale as Locale
+	return DEFAULT_LOCALE
 }
 
 export function getNextLocale(locale: Locale) {
-	const locales = Object.keys(translations) as Locale[]
+	const locales = Object.keys(TRANSLATIONS) as Locale[]
 	const index = locales.indexOf(locale)
 	if (index !== -1) {
 		const nextIndex = (index + 1) % locales.length
 		return locales[nextIndex]
 	}
-	return defaultLocale
+	return DEFAULT_LOCALE
 }
 
 export function useTranslations(locale: Locale) {
 	return (key: string, ...args: string[]) => {
 		const keys = key.split(".")
-		let translation = translations[locale][keys[0]]
+		let translation = TRANSLATIONS[locale][keys[0]]
 
 		if (keys.length > 1) {
 			for (let i = 1; i < keys.length; i++) {
