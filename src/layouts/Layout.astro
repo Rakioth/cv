@@ -58,14 +58,14 @@ const { lang, title, description, image } = Astro.props
 				}
 
 				::-webkit-scrollbar-thumb {
+					@apply bg-black;
 					border: 0.125rem solid transparent;
 					border-radius: 0.675rem;
-					background-color: black;
 					background-clip: content-box;
 				}
 
 				::-webkit-scrollbar-thumb:active {
-					background-color: theme("colors.gray.500");
+					@apply bg-gray-500;
 				}
 
 				::-webkit-scrollbar-track {

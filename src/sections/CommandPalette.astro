@@ -143,13 +143,11 @@ const nextLocalePath = () => {
 	import { navigate } from "astro:transitions/client"
 	import HotKeyPad from "hotkeypad"
 
-	import { $$ } from "@/lib/dom-selector"
-
 	document.addEventListener("astro:page-load", () => {
 		const reducedMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)")
 
 		const hotKeyPad = new HotKeyPad()
-		const commandPaletteTriggers = $$(".command-palette")
+		const commandPaletteTriggers = document.querySelectorAll(".command-palette")
 
 		const localeCurrent = hotKeyPad.instance.dataset.localeCurrent ?? "en"
 		const localePath = hotKeyPad.instance.dataset.localePath ?? "/en"
