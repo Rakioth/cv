@@ -45,7 +45,7 @@ const nextLocalePath = () => {
 
 <div
 	id="hotkeypad"
-	class="print:hidden"
+	class="motion-reduce:!transition-none print:hidden"
 	data-activation-letter="D"
 	data-placeholder={t("command-palette.placeholder")}
 	data-locale-current={locale}
@@ -111,7 +111,7 @@ const nextLocalePath = () => {
 	}
 
 	#hotkeypad [data-hotkey] {
-		@apply mx-2 rounded-md px-2 py-3 text-sm before:content-none;
+		@apply mx-2 rounded-md px-2 py-3 text-sm before:content-none motion-reduce:transition-none;
 	}
 
 	#hotkeypad [data-hotkey] p {
@@ -144,7 +144,7 @@ const nextLocalePath = () => {
 	import HotKeyPad from "hotkeypad"
 
 	document.addEventListener("astro:page-load", () => {
-		const reducedMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)")
+		const reducedMotionPreference = window.matchMedia("(prefers-reduced-motion: no-preference)")
 
 		const hotKeyPad = new HotKeyPad()
 		const commandPaletteTriggers = document.querySelectorAll(".command-palette")
@@ -170,7 +170,7 @@ const nextLocalePath = () => {
 				hotkey: "ctrl+S",
 				section: sectionLabel,
 				handler: () =>
-					reducedMotionPreference.matches ? window.open(localePath, "_self") : navigate(localePath),
+					reducedMotionPreference.matches ? navigate(localePath) : window.open(localePath, "_self"),
 			},
 			{
 				id: "portfolio",
