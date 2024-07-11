@@ -7,26 +7,32 @@ const locale = getLocaleByUrl(Astro.url)
 const t = useTranslations(locale)
 
 const experiences = [
-	{
-		startDate: "2023-09-18",
-		company: t("experience.0.company"),
-		location: t("experience.0.location"),
-		position: t("experience.0.position"),
-		responsibilities: [t("experience.0.responsibilities.0"), t("experience.0.responsibilities.1")],
-		accomplishments: [t("experience.0.accomplishments.0"), t("experience.0.accomplishments.1")],
-		link: "https://www.tragsa.es",
-	},
+  {
+    startDate: "2023-09-18",
+    company: t("experience.0.company"),
+    location: t("experience.0.location"),
+    position: t("experience.0.position"),
+    responsibilities: [
+      t("experience.0.responsibilities.0"),
+      t("experience.0.responsibilities.1"),
+    ],
+    accomplishments: [
+      t("experience.0.accomplishments.0"),
+      t("experience.0.accomplishments.1"),
+    ],
+    link: "https://www.tragsa.es",
+  },
 ]
 ---
 
 <SectionContainer title={t("experience.title")}>
-	<ol class="spacer">
-		{
-			experiences.map((experience) => (
-				<li>
-					<ExperienceItem {...experience} />
-				</li>
-			))
-		}
-	</ol>
+  <ol class="spacer">
+    {
+      experiences.map((experience) => (
+        <li>
+          <ExperienceItem {...experience} />
+        </li>
+      ))
+    }
+  </ol>
 </SectionContainer>

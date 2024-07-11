@@ -1,5 +1,10 @@
 ---
-import { TRANSLATIONS, getLocaleByUrl, getNextLocale, useTranslations } from "@/i18n"
+import {
+  TRANSLATIONS,
+  getLocaleByUrl,
+  getNextLocale,
+  useTranslations,
+} from "@/i18n"
 import CommandIcon from "@/icons/Command.astro"
 import "hotkeypad/index.css"
 
@@ -9,194 +14,200 @@ const t = useTranslations(locale)
 const nextLocale = getNextLocale(locale)
 
 const nextLocalePath = () => {
-	const pathname = Astro.url.pathname
-	const path = pathname.split("/")
+  const pathname = Astro.url.pathname
+  const path = pathname.split("/")
 
-	const index = path.findIndex((locale) => locale in TRANSLATIONS)
+  const index = path.findIndex((locale) => locale in TRANSLATIONS)
 
-	if (index !== -1) {
-		path[index] = nextLocale
-		return path.join("/")
-	}
+  if (index !== -1) {
+    path[index] = nextLocale
+    return path.join("/")
+  }
 
-	return `/${nextLocale}${pathname}`
+  return `/${nextLocale}${pathname}`
 }
 ---
 
 <footer
-	class="command-palette group fixed bottom-0 left-0 right-0 hidden cursor-pointer border-t border-t-gray-200 bg-white p-1 text-center text-sm text-gray-500 hover:bg-gray-100 hover:text-black motion-safe:animate-[reveal_1s_linear] motion-safe:transition-colors lg:block print:hidden"
+  class="command-palette group fixed bottom-0 left-0 right-0 hidden cursor-pointer border-t border-t-gray-200 bg-white p-1 text-center text-sm text-gray-500 hover:bg-gray-100 hover:text-black motion-safe:animate-[reveal_1s_linear] motion-safe:transition-colors lg:block print:hidden"
 >
-	{t("command-palette.press")}
-	<kbd
-		class="inline-flex h-5 items-center gap-1 rounded border bg-gray-100 px-1.5 font-mono text-[0.625rem] font-medium group-hover:bg-gray-300 motion-safe:transition-colors"
-	>
-		<span class="text-xs">⌘</span>D
-	</kbd>
-	{t("command-palette.hint")}
+  {t("command-palette.press")}
+  <kbd
+    class="inline-flex h-5 items-center gap-1 rounded border bg-gray-100 px-1.5 font-mono text-[0.625rem] font-medium group-hover:bg-gray-300 motion-safe:transition-colors"
+  >
+    <span class="text-xs">⌘</span>D
+  </kbd>
+  {t("command-palette.hint")}
 </footer>
 
 <button
-	type="button"
-	aria-label=`${t("command-palette.press")} ${t("command-palette.hint")}`
-	class="command-palette fixed bottom-3 right-3 flex size-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-2xl hover:bg-gray-100 hover:text-black focus-visible:border-gray-500 focus-visible:outline-none motion-safe:transition-colors lg:hidden print:hidden"
+  type="button"
+  aria-label=`${t("command-palette.press")} ${t("command-palette.hint")}`
+  class="command-palette fixed bottom-3 right-3 flex size-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-2xl hover:bg-gray-100 hover:text-black focus-visible:border-gray-500 focus-visible:outline-none motion-safe:transition-colors lg:hidden print:hidden"
 >
-	<CommandIcon />
+  <CommandIcon />
 </button>
 
 <div
-	id="hotkeypad"
-	class="motion-reduce:!transition-none print:hidden"
-	data-activation-letter="D"
-	data-placeholder={t("command-palette.placeholder")}
-	data-locale-current={locale}
-	data-locale-path={nextLocalePath()}
-	data-language-label={t(`command-palette.locale.${nextLocale}`)}
-	data-print-label={t("command-palette.print")}
-	data-portfolio-label={t("command-palette.portfolio")}
-	data-section-label={t("command-palette.section")}
+  id="hotkeypad"
+  class="motion-reduce:!transition-none print:hidden"
+  data-activation-letter="D"
+  data-placeholder={t("command-palette.placeholder")}
+  data-locale-current={locale}
+  data-locale-path={nextLocalePath()}
+  data-language-label={t(`command-palette.locale.${nextLocale}`)}
+  data-print-label={t("command-palette.print")}
+  data-portfolio-label={t("command-palette.portfolio")}
+  data-section-label={t("command-palette.section")}
 >
 </div>
 
 <style>
-	@keyframes reveal {
-		from {
-			@apply pointer-events-none opacity-0;
-		}
-		to {
-			@apply pointer-events-auto opacity-100;
-		}
-	}
+  @keyframes reveal {
+    from {
+      @apply pointer-events-none opacity-0;
+    }
+    to {
+      @apply pointer-events-auto opacity-100;
+    }
+  }
 
-	footer {
-		animation-timeline: scroll();
-		animation-range: 0 10%;
-	}
+  footer {
+    animation-timeline: scroll();
+    animation-range: 0 10%;
+  }
 
-	#hotkeypad {
-		--hotkeypad-bg-backdrop: black;
-		--hotkeypad-bg-item-hover: theme("colors.gray.100");
-		--hotkeypad-border-container: theme("colors.gray.300");
-		--hotkeypad-border-container-hover: theme("colors.gray.300");
-		--hotkeypad-fg-muted: theme("colors.gray.500");
-	}
+  #hotkeypad {
+    --hotkeypad-bg-backdrop: black;
+    --hotkeypad-bg-item-hover: theme("colors.gray.100");
+    --hotkeypad-border-container: theme("colors.gray.300");
+    --hotkeypad-border-container-hover: theme("colors.gray.300");
+    --hotkeypad-fg-muted: theme("colors.gray.500");
+  }
 </style>
 
 <style is:global>
-	#hotkeypad [data-backdrop] {
-		@apply opacity-20;
-	}
+  #hotkeypad [data-backdrop] {
+    @apply opacity-20;
+  }
 
-	#hotkeypad [data-container] {
-		@apply w-[calc(100%-3rem)] max-w-xl;
-	}
+  #hotkeypad [data-container] {
+    @apply w-[calc(100%-3rem)] max-w-xl;
+  }
 
-	#hotkeypad [data-container] header {
-		@apply p-4;
-	}
+  #hotkeypad [data-container] header {
+    @apply p-4;
+  }
 
-	#hotkeypad [data-container] header input {
-		@apply text-sm text-black;
-	}
+  #hotkeypad [data-container] header input {
+    @apply text-sm text-black;
+  }
 
-	#hotkeypad [data-sections] {
-		@apply border-b-0;
-	}
+  #hotkeypad [data-sections] {
+    @apply border-b-0;
+  }
 
-	#hotkeypad [data-section] h4 {
-		@apply px-4 pb-1.5 font-newsreader text-xs font-medium italic text-black;
-	}
+  #hotkeypad [data-section] h4 {
+    @apply px-4 pb-1.5 font-newsreader text-xs font-medium italic text-black;
+  }
 
-	#hotkeypad [data-section] li {
-		@apply min-h-12;
-	}
+  #hotkeypad [data-section] li {
+    @apply min-h-12;
+  }
 
-	#hotkeypad [data-hotkey] {
-		@apply mx-2 rounded-md px-2 py-3 text-sm before:content-none motion-reduce:transition-none;
-	}
+  #hotkeypad [data-hotkey] {
+    @apply mx-2 rounded-md px-2 py-3 text-sm before:content-none motion-reduce:transition-none;
+  }
 
-	#hotkeypad [data-hotkey] p {
-		@apply normal-case;
-	}
+  #hotkeypad [data-hotkey] p {
+    @apply normal-case;
+  }
 
-	#hotkeypad [data-hotkey] div {
-		@apply hidden lg:flex;
-	}
+  #hotkeypad [data-hotkey] div {
+    @apply hidden lg:flex;
+  }
 
-	#hotkeypad [data-hotkey] span {
-		@apply w-fit !text-[0.625rem] font-medium;
-	}
+  #hotkeypad [data-hotkey] span {
+    @apply w-fit !text-[0.625rem] font-medium;
+  }
 
-	#hotkeypad [data-hotkey][data-active] p {
-		@apply text-black;
-	}
+  #hotkeypad [data-hotkey][data-active] p {
+    @apply text-black;
+  }
 
-	#hotkeypad [data-hotkey][data-active] span {
-		@apply bg-gray-300 text-black;
-	}
+  #hotkeypad [data-hotkey][data-active] span {
+    @apply bg-gray-300 text-black;
+  }
 
-	#hotkeypad [data-container] footer {
-		@apply hidden;
-	}
+  #hotkeypad [data-container] footer {
+    @apply hidden;
+  }
 </style>
 
 <script>
-	import { navigate } from "astro:transitions/client"
-	import HotKeyPad from "hotkeypad"
+  import { navigate } from "astro:transitions/client"
+  import HotKeyPad from "hotkeypad"
 
-	document.addEventListener("astro:page-load", () => {
-		const reducedMotionPreference = window.matchMedia("(prefers-reduced-motion: no-preference)")
+  document.addEventListener("astro:page-load", () => {
+    const reducedMotionPreference = window.matchMedia(
+      "(prefers-reduced-motion: no-preference)"
+    )
 
-		const hotKeyPad = new HotKeyPad()
-		const commandPaletteTriggers = document.querySelectorAll(".command-palette")
+    const hotKeyPad = new HotKeyPad()
+    const commandPaletteTriggers = document.querySelectorAll(".command-palette")
 
-		const localeCurrent = hotKeyPad.instance.dataset.localeCurrent ?? "en"
-		const localePath = hotKeyPad.instance.dataset.localePath ?? "/en"
-		const printLabel = hotKeyPad.instance.dataset.printLabel ?? ""
-		const portfolioLabel = hotKeyPad.instance.dataset.portfolioLabel ?? ""
-		const languageLabel = hotKeyPad.instance.dataset.languageLabel ?? ""
-		const sectionLabel = hotKeyPad.instance.dataset.sectionLabel ?? ""
+    const localeCurrent = hotKeyPad.instance.dataset.localeCurrent ?? "en"
+    const localePath = hotKeyPad.instance.dataset.localePath ?? "/en"
+    const printLabel = hotKeyPad.instance.dataset.printLabel ?? ""
+    const portfolioLabel = hotKeyPad.instance.dataset.portfolioLabel ?? ""
+    const languageLabel = hotKeyPad.instance.dataset.languageLabel ?? ""
+    const sectionLabel = hotKeyPad.instance.dataset.sectionLabel ?? ""
 
-		hotKeyPad.setCommands([
-			{
-				id: "print",
-				title: printLabel,
-				hotkey: "ctrl+P",
-				section: sectionLabel,
-				handler: () => window.print(),
-			},
-			{
-				id: "language",
-				title: languageLabel,
-				hotkey: "ctrl+S",
-				section: sectionLabel,
-				handler: () =>
-					reducedMotionPreference.matches ? navigate(localePath) : window.open(localePath, "_self"),
-			},
-			{
-				id: "portfolio",
-				title: portfolioLabel,
-				hotkey: "ctrl+O",
-				section: "Links",
-				handler: () => window.open(`https://raks.dev/${localeCurrent}`, "_blank"),
-			},
-			{
-				id: "linkedin",
-				title: "LinkedIn",
-				hotkey: "ctrl+L",
-				section: "Links",
-				handler: () => window.open("https://linkedin.com/in/dmunozneyra", "_blank"),
-			},
-			{
-				id: "github",
-				title: "GitHub",
-				hotkey: "ctrl+G",
-				section: "Links",
-				handler: () => window.open("https://github.com/Rakioth", "_blank"),
-			},
-		])
+    hotKeyPad.setCommands([
+      {
+        id: "print",
+        title: printLabel,
+        hotkey: "ctrl+P",
+        section: sectionLabel,
+        handler: () => window.print(),
+      },
+      {
+        id: "language",
+        title: languageLabel,
+        hotkey: "ctrl+S",
+        section: sectionLabel,
+        handler: () =>
+          reducedMotionPreference.matches
+            ? navigate(localePath)
+            : window.open(localePath, "_self"),
+      },
+      {
+        id: "portfolio",
+        title: portfolioLabel,
+        hotkey: "ctrl+O",
+        section: "Links",
+        handler: () =>
+          window.open(`https://raks.dev/${localeCurrent}`, "_blank"),
+      },
+      {
+        id: "linkedin",
+        title: "LinkedIn",
+        hotkey: "ctrl+L",
+        section: "Links",
+        handler: () =>
+          window.open("https://linkedin.com/in/dmunozneyra", "_blank"),
+      },
+      {
+        id: "github",
+        title: "GitHub",
+        hotkey: "ctrl+G",
+        section: "Links",
+        handler: () => window.open("https://github.com/Rakioth", "_blank"),
+      },
+    ])
 
-		commandPaletteTriggers.forEach((trigger) =>
-			trigger.addEventListener("click", () => hotKeyPad.open())
-		)
-	})
+    commandPaletteTriggers.forEach((trigger) =>
+      trigger.addEventListener("click", () => hotKeyPad.open())
+    )
+  })
 </script>

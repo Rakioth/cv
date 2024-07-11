@@ -7,24 +7,24 @@ const locale = getLocaleByUrl(Astro.url)
 const t = useTranslations(locale)
 
 const educations = [
-	{
-		startDate: "2021-09-08",
-		endDate: "2024-06-21",
-		institution: t("education.0.institution"),
-		area: t("education.0.area"),
-		link: "https://www.tragsa.es",
-	},
+  {
+    startDate: "2021-09-08",
+    endDate: "2024-06-21",
+    institution: t("education.0.institution"),
+    area: t("education.0.area"),
+    link: "https://www.tragsa.es",
+  },
 ]
 ---
 
 <SectionContainer title={t("education.title")}>
-	<ol class="spacer">
-		{
-			educations.map((education) => (
-				<li>
-					<EducationItem {...education} />
-				</li>
-			))
-		}
-	</ol>
+  <ol class="spacer">
+    {
+      educations.map((education) => (
+        <li>
+          <EducationItem {...education} />
+        </li>
+      ))
+    }
+  </ol>
 </SectionContainer>

@@ -7,25 +7,25 @@ const locale = getLocaleByUrl(Astro.url)
 const t = useTranslations(locale)
 
 const languages = [
-	{
-		lang: t("languages.0.lang"),
-		detail: t("languages.0.detail"),
-	},
-	{
-		lang: t("languages.1.lang"),
-		detail: t("languages.1.detail"),
-	},
+  {
+    lang: t("languages.0.lang"),
+    detail: t("languages.0.detail"),
+  },
+  {
+    lang: t("languages.1.lang"),
+    detail: t("languages.1.detail"),
+  },
 ]
 ---
 
 <SectionContainer title={t("languages.title")}>
-	<ul class="-mx-3 flex flex-col gap-3 sm:flex-row">
-		{
-			languages.map((language) => (
-				<li class="flex-1">
-					<LanguageItem {...language} />
-				</li>
-			))
-		}
-	</ul>
+  <ul class="-mx-3 flex flex-col gap-3 sm:flex-row">
+    {
+      languages.map((language) => (
+        <li class="flex-1">
+          <LanguageItem {...language} />
+        </li>
+      ))
+    }
+  </ul>
 </SectionContainer>

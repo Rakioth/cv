@@ -5,7 +5,7 @@ const locale = getLocaleByUrl(Astro.url)
 const t = useTranslations(locale)
 
 interface Props {
-	date?: string
+  date?: string
 }
 
 const { date } = Astro.props
@@ -14,9 +14,9 @@ const year = date ? new Date(date).getFullYear() : t("experience.current")
 ---
 
 <time
-	data-date={date}
-	datetime={date}
-	class="data-[date]:relative data-[date]:after:invisible data-[date]:after:absolute data-[date]:after:-left-1/2 data-[date]:after:top-5 data-[date]:after:whitespace-nowrap data-[date]:after:rounded-md data-[date]:after:bg-black data-[date]:after:px-2 data-[date]:after:py-1 data-[date]:after:font-mono data-[date]:after:text-xs data-[date]:after:text-white data-[date]:after:opacity-0 data-[date]:after:shadow-sm data-[date]:after:content-[attr(data-date)] data-[date]:hover:after:visible data-[date]:hover:after:opacity-100 data-[date]:motion-safe:after:duration-500 data-[date]:motion-safe:hover:after:duration-500 data-[date]:motion-safe:hover:after:ease-in-out"
+  data-date={date}
+  datetime={date}
+  class="data-[date]:relative data-[date]:after:invisible data-[date]:after:absolute data-[date]:after:-left-1/2 data-[date]:after:top-5 data-[date]:after:whitespace-nowrap data-[date]:after:rounded-md data-[date]:after:bg-black data-[date]:after:px-2 data-[date]:after:py-1 data-[date]:after:font-mono data-[date]:after:text-xs data-[date]:after:text-white data-[date]:after:opacity-0 data-[date]:after:shadow-sm data-[date]:after:content-[attr(data-date)] data-[date]:hover:after:visible data-[date]:hover:after:opacity-100 data-[date]:motion-safe:after:duration-500 data-[date]:motion-safe:hover:after:duration-500 data-[date]:motion-safe:hover:after:ease-in-out"
 >
-	{year}
+  {year}
 </time>

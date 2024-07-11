@@ -7,18 +7,22 @@ import Languages from "@/sections/Languages.astro"
 import Skills from "@/sections/Skills.astro"
 
 export function getStaticPaths() {
-	return Object.keys(TRANSLATIONS).map((locale) => ({ params: { locale } }))
+  return Object.keys(TRANSLATIONS).map((locale) => ({ params: { locale } }))
 }
 
 const locale = getLocaleByUrl(Astro.url)
 const t = useTranslations(locale)
 ---
 
-<Layout lang={locale} title={t("title", "Daniel Muñoz Neyra")} description={t("description")}>
-	<main class="spacer">
-		<Experience />
-		<Skills />
-		<Education />
-		<Languages />
-	</main>
+<Layout
+  lang={locale}
+  title={t("title", "Daniel Muñoz Neyra")}
+  description={t("description")}
+>
+  <main class="spacer">
+    <Experience />
+    <Skills />
+    <Education />
+    <Languages />
+  </main>
 </Layout>

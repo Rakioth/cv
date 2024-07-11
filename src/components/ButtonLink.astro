@@ -1,23 +1,23 @@
 ---
 interface Props {
-	href: string
-	isExternal?: boolean
-	ariaLabel?: string
-	class?: string
+  href: string
+  isExternal?: boolean
+  ariaLabel?: string
+  class?: string
 }
 
 const { href, ariaLabel, isExternal = true, class: className } = Astro.props
 ---
 
 <a
-	href={href}
-	rel={isExternal ? "noopener noreferrer" : undefined}
-	target={isExternal ? "_blank" : "_self"}
-	aria-label={ariaLabel}
-	class:list={[
-		className,
-		"inline-flex size-8 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 hover:bg-gray-100 hover:text-black focus-visible:border-gray-500 focus-visible:outline-none motion-safe:transition-colors [&>svg]:size-[1.125rem]",
-	]}
+  href={href}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  target={isExternal ? "_blank" : "_self"}
+  aria-label={ariaLabel}
+  class:list={[
+    className,
+    "inline-flex size-8 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 hover:bg-gray-100 hover:text-black focus-visible:border-gray-500 focus-visible:outline-none motion-safe:transition-colors [&>svg]:size-[1.125rem]",
+  ]}
 >
-	<slot />
+  <slot />
 </a>

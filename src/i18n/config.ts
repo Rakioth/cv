@@ -3,11 +3,11 @@ import esTranslations from "@/i18n/translations/es.json"
 
 export type Locale = "en" | "es"
 export interface Translation {
-	[key: string]: string | Translation
+  [key: string]: string | Translation
 }
 
 export const DEFAULT_LOCALE: Locale = "en"
 export const TRANSLATIONS: Record<Locale, Translation> = {
-	en: enTranslations,
-	es: esTranslations,
+  en: enTranslations,
+  es: esTranslations,
 } as const

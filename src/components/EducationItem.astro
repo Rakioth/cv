@@ -3,35 +3,35 @@ import DateHint from "@/components/DateHint.astro"
 import SimpleLink from "@/components/SimpleLink.astro"
 
 interface Props {
-	startDate: string
-	endDate?: string
-	institution: string
-	area: string
-	link: string
+  startDate: string
+  endDate?: string
+  institution: string
+  area: string
+  link: string
 }
 
 const { startDate, endDate, institution, area, link } = Astro.props
 ---
 
 <article class="flex flex-col gap-y-1">
-	<header class="flex items-center justify-between gap-x-2">
-		<h3 class="font-semibold text-black">
-			<SimpleLink
-				href={link}
-				class="rounded-sm hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-500"
-			>
-				{institution}
-			</SimpleLink>
-		</h3>
+  <header class="flex items-center justify-between gap-x-2">
+    <h3 class="font-semibold text-black">
+      <SimpleLink
+        href={link}
+        class="rounded-sm hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-500"
+      >
+        {institution}
+      </SimpleLink>
+    </h3>
 
-		<div class="text-sm tabular-nums text-gray-500">
-			<DateHint date={startDate} />
-			—
-			<DateHint date={endDate} />
-		</div>
-	</header>
+    <div class="text-sm tabular-nums text-gray-500">
+      <DateHint date={startDate} />
+      —
+      <DateHint date={endDate} />
+    </div>
+  </header>
 
-	<footer>
-		<p class="text-pretty font-mono text-sm text-gray-500">{area}</p>
-	</footer>
+  <footer>
+    <p class="text-pretty font-mono text-sm text-gray-500">{area}</p>
+  </footer>
 </article>

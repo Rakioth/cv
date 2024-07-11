@@ -2,15 +2,15 @@
 import type { HTMLTag } from "astro/types"
 
 interface Props {
-	as?: HTMLTag
-	title?: string
-	class?: string
+  as?: HTMLTag
+  title?: string
+  class?: string
 }
 
 const { as: Tag = "section", title, class: className } = Astro.props
 ---
 
 <Tag class:list={[className, "container mx-auto w-full max-w-2xl"]}>
-	{title && <h2 class="mb-2 text-xl font-bold text-black">{title}</h2>}
-	<slot />
+  {title && <h2 class="mb-2 text-xl font-bold text-black">{title}</h2>}
+  <slot />
 </Tag>
