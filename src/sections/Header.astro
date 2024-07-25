@@ -2,14 +2,14 @@
 import ButtonLink from "@/components/ButtonLink.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
 import SimpleLink from "@/components/SimpleLink.astro"
-import { getLocaleByUrl, useTranslations } from "@/i18n"
+import { getLocale, useTranslations } from "@/i18n"
 import DribbbleIcon from "@/icons/Dribbble.astro"
 import GitHubIcon from "@/icons/GitHub.astro"
 import GlobeIcon from "@/icons/Globe.astro"
 import LinkedInIcon from "@/icons/LinkedIn.astro"
 import MailIcon from "@/icons/Mail.astro"
 
-const locale = getLocaleByUrl(Astro.url)
+const locale = getLocale(Astro.currentLocale)
 const t = useTranslations(locale)
 
 const buttonLinks = [

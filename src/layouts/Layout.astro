@@ -2,13 +2,14 @@
 import { ViewTransitions } from "astro:transitions"
 
 import SEO from "@/components/SEO.astro"
+import type { Locale } from "@/i18n"
 import CommandPalette from "@/sections/CommandPalette.astro"
 import Header from "@/sections/Header.astro"
 import "@fontsource-variable/newsreader"
 import "@fontsource-variable/onest"
 
 interface Props {
-  lang: string
+  lang: Locale
   title: string
   description: string
   image?: string

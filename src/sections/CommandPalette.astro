@@ -1,14 +1,9 @@
 ---
-import {
-  TRANSLATIONS,
-  getLocaleByUrl,
-  getNextLocale,
-  useTranslations,
-} from "@/i18n"
+import { TRANSLATIONS, getLocale, getNextLocale, useTranslations } from "@/i18n"
 import CommandIcon from "@/icons/Command.astro"
 import "hotkeypad/index.css"
 
-const locale = getLocaleByUrl(Astro.url)
+const locale = getLocale(Astro.currentLocale)
 const t = useTranslations(locale)
 
 const nextLocale = getNextLocale(locale)
