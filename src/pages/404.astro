@@ -1,32 +1,5 @@
 ---
-import ButtonLink from "@/components/ButtonLink.astro"
-import { getLocale, useTranslations } from "@/i18n"
-import ArrowIcon from "@/icons/Arrow.astro"
-import Layout from "@/layouts/Layout.astro"
-
-const locale = getLocale(Astro.currentLocale)
-const t = useTranslations(locale)
+import NotFound from "@/components/NotFound.astro"
 ---
 
-<Layout
-  lang={locale}
-  title={t("title", "Error 404")}
-  description={t("description")}
->
-  <main class="my-auto flex flex-col items-center justify-center gap-y-4">
-    <h3
-      class="font-newsreader text-4xl font-medium italic text-gray-500 sm:text-5xl"
-    >
-      Error
-    </h3>
-    <h1 class="font-mono text-8xl text-black sm:text-9xl">404</h1>
-    <ButtonLink
-      href=`/${locale}`
-      isExternal={false}
-      class="w-fit gap-x-2 p-1.5"
-    >
-      <ArrowIcon />
-      {t("go-back")}
-    </ButtonLink>
-  </main>
-</Layout>
+<NotFound />
